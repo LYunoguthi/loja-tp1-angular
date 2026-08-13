@@ -10,5 +10,12 @@ import { Footer } from "./core/footer/footer";
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('loja-tp1-angular');
+  protected readonly title = signal('Loja TP1 APP');
+  sobre?: string;
+
+  receberSobre(msg: string): void{
+    this.sobre = msg;
+  }
+
+
 }
