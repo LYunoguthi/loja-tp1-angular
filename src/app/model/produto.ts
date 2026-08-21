@@ -3,6 +3,6 @@ export interface Produto {
     nome: string;
     preco: number;
     descricao: string;
-    imageUrl?: boolean;
+    imageUrl?: string;
     promo?: boolean;
 }
