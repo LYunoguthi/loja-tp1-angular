@@ -16,6 +16,7 @@ export class App {
   protected readonly title = signal('Loja TP1 APP');
   sobre?: string;
 
+  x = signal(10);
 
 
   receberSobre(msg: string): void{

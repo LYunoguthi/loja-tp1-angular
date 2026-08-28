@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { Produto } from '../../../model/produto';
 import { CardProduto } from "../card-produto/card-produto";
 
@@ -10,6 +10,16 @@ import { CardProduto } from "../card-produto/card-produto";
 })
 export class ListaProdutos {
 
+  apenasPromo = signal(false);
+
+  produtosExibidos = computed(() =>
+  this.apenasPromo() ? this.produtos.filter(p => p.promo)
+  : this.produtos);
+
+  alternarPromo(){
+    this.apenasPromo.update(v =>!v);
+  }
+
   produtos = <Produto[]>[
     {
       id: 1,
@@ -18,6 +28,7 @@ export class ListaProdutos {
       descricao: 'Canetas 1',
       imageUrl: 'images/mounjaro.jpg',
       promo: false,
+      estado: 'novo'
     },
     {
       id: 2,
@@ -26,6 +37,7 @@ export class ListaProdutos {
       descricao: 'Canetas 2',
       imageUrl: 'images/ozempic.jpg',
       promo: false,
+      estado: 'usado'
     },
     {
       id: 3,
@@ -34,6 +46,7 @@ export class ListaProdutos {
       descricao: 'Canetas 3',
       imageUrl: 'images/wegovy.jpg',
       promo: true,
+      estado: 'novo'
     },
   ];
 
