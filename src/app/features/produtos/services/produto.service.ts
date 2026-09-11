@@ -7,7 +7,6 @@ import { delay, Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class ProdutoService {
-
   private logger = inject(LoggerService);
 
   private readonly listaMock = <Produto[]>[
@@ -46,4 +45,12 @@ export class ProdutoService {
       delay(250)
     );
   }
+
+  getById(id: number): Observable<Produto | undefined> {
+    this.logger.info(`[PRODUTO SERVICE] - Buscando produto id=${id}`);
+    return of(this.listaMock.find(p => p.id === id)).pipe(
+      delay(250)
+    );
+  }
+
 }
