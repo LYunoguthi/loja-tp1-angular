@@ -10,7 +10,7 @@ export interface Produto {
     estado?: 'novo' | 'usado' | 'esgotado';
 }
 
-export class ProdutoMappes {
+export class ProdutoMapper {
     static fromJson(json: any): Produto{
         let _estado = estados[Math.floor(Math.random() * estados.length)];
         return{
