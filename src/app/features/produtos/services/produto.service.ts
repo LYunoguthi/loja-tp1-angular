@@ -15,35 +15,7 @@ export class ProdutoService {
 
 
 
-  private readonly listaMock = <Produto[]>[
-    {
-      id: 1,
-      nome: 'Mounjaro',
-      preco: 1699,
-      descricao: 'Canetas 1',
-      imageUrl: 'images/mounjaro.jpg',
-      promo: false,
-      estado: 'novo'
-    },
-    {
-      id: 2,
-      nome: 'Ozempic',
-      preco: 1299,
-      descricao: 'Canetas 2',
-      imageUrl: 'images/ozempic.jpg',
-      promo: false,
-      estado: 'usado'
-    },
-    {
-      id: 3,
-      nome: 'Wegovy',
-      preco: 2500,
-      descricao: 'Canetas 3',
-      imageUrl: 'images/wegovy.jpg',
-      promo: true,
-      estado: 'novo'
-    },
-  ];
+
 
   listar(): Observable<Produto[]>{
     this.logger.info("[PRODUTO SERVICE] - Retornando lista de produtos");
@@ -59,9 +31,12 @@ export class ProdutoService {
   getById(id: number): Observable<Produto | undefined> {
     //exercicio
     this.logger.info(`[PRODUTO SERVICE] - Buscando produto id=${id}`);
-    return of(this.listaMock.find(p => p.id === id)).pipe(
-      delay(250)
-    );
+    return of();
+  }
+
+  criar(produto: Produto):Observable<any>{
+    return this.http.post(this.apiUrl, ProdutoMapper.toJson(produto));
+
   }
 
 }
