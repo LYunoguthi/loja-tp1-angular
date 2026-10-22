@@ -1,4 +1,4 @@
-.contador{
+.contador {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -7,20 +7,20 @@
     padding: 6px 10px;
 }
 
-.contador button{
-    border: nome;
-    background: #2f9e41;
+.contador button {
+    border: none;
+    background-color: #2f9e41;
     color: #fff;
-    padding: 6px 10px;
+    padding: 6px 10px; 
     border-radius: 4px;
     cursor: pointer;
 }
 
-.contador button:hover{
-    opacity: .9;
+.contador button:hover {
+    opacity: 0.8;
 }
 
-.valor{
+.valor {
     min-width: 24px;
     text-align: center;
     font-weight: bold;

@@ -2,12 +2,11 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm",
-    "analytics": "0b998a46-92ea-41db-ae07-137c9f330de9"
+    "packageManager": "npm"
   },
   "newProjectRoot": "projects",
   "projects": {
-    "loja-tp1-angular": {
+    "loja-angular": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -25,9 +24,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ]
+            "styles": ["src/material-theme.scss", "src/styles.css"]
           },
           "configurations": {
             "production": {
@@ -57,10 +54,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "loja-tp1-angular:build:production"
+              "buildTarget": "loja-angular:build:production"
             },
             "development": {
-              "buildTarget": "loja-tp1-angular:build:development"
+              "buildTarget": "loja-angular:build:development"
             }
           },
           "defaultConfiguration": "development"

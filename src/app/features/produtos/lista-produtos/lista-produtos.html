@@ -1,32 +1,52 @@
 <section class="catalogo">
     <header class="barradetarefas">
-        <h2>Catalogo</h2>
+        <h2>Catálogo</h2>
 
-        <button class="btn sopromo" [class.ativo]="apenasPromo()" (click)="alternarPromo()">
-        @if (apenasPromo()) {
-            Mostrar todos
-        }
-        @else {
-            Promoções
-        }
+        <div class="acoes-header">
 
-        </button>
+            <select
+                id="categoria"
+                #seletorCategoria
+                [value]="categoriaSelecionada()"
+                (change)="categoriaSelecionada.set(seletorCategoria.value)"
+            >
+                <option value="">Todas as categorias</option>
+                @for (categoria of categoria(); track categoria) {
+                    <option [value]="categoria">{{ categoria }}</option>
+                }
+            </select>
 
+            <button type="butto" class="btn sopromo" [class.ativo]="apenasPromo()" (click)="altenarPromo()">
+                @if (apenasPromo()) {
+                    Mostrar Todos
+                } @else {
+                    Promoções
+                }
+            </button>
+
+            <button type="button" class="btn primary" (click)="onCreateProduct('/produto/novo')">
+                + Novo Produto
+            </button>>
+        </div>
     </header>
-    
-    @if(carregando()){
-        <p>Carregando produtos...</p>
-    }
 
-    @else if (produtosExibidos().length == 0) {
-        <p class="vazio">Nenhum produto encontrado para ser exibido</p>
+    @if (carregando()) {
+        <p class="carregando">Carregando produtos...</p>
+    }
+    @else if (erroAoCarregar()) {
+        <p>Erro ao carregar produtos. Tente novamente</p>
+    }
+    @else if (produtosExibidos().length === 0) {
+        <p class="vazio">Nenhum produto encontrado.</p>
     }
     @else {
         <div class="grid">
-            @for (prod of produtosExibidos(); track prod.id) {
-                <app-card-produto [produto]="prod" (add)="onAddProduct($event)" (view)="onViewProduct($event)"></app-card-produto>
+            @for(prod of produtosExibidos(); track prod.id) {
+                <app-card-produto [produto]="prod" 
+                    (add)="onAddProduct($event)"
+                    (view)="onViewProduct($event)">
+                </app-card-produto>
             }
         </div>
     }
-
 </section>

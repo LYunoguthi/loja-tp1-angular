@@ -7,4 +7,8 @@ import { ListaProdutos } from "../produtos/lista-produtos/lista-produtos";
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home {}
+export class Home {
+
+
+
+}
